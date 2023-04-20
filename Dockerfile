@@ -34,7 +34,7 @@ RUN pip3.7 install torch==1.2.0 torchvision==0.4.0
 # TIA
 RUN apt install git -y
 WORKDIR /
-RUN git clone https://github.com/MCG-NJU/TIA.git
+RUN git clone https://github.com/davideNasi/TIA.git
 WORKDIR /TIA/lib
 RUN python3.7 setup.py build develop
 
