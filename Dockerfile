@@ -29,7 +29,10 @@ RUN ./configure
 RUN make altinstall
 
 # Dependencies
+RUN pip3.7 install --upgrade pip
 RUN pip3.7 install torch==1.2.0 torchvision==0.4.0
+RUN pip3.7 install "pillow<7"
+RUN pip3.7 install easydict pyyaml==5.4.1 opencv-python scipy
 
 # TIA
 RUN apt install git -y
@@ -37,4 +40,5 @@ WORKDIR /
 RUN git clone https://github.com/davideNasi/TIA.git
 WORKDIR /TIA/lib
 RUN python3.7 setup.py build develop
+WORKDIR /TIA
 
