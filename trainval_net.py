@@ -155,7 +155,6 @@ if __name__ == '__main__':
 		s_imdb.num_classes,
 		training=True,
 	)
-
 	s_dataloader = torch.utils.data.DataLoader(
 		s_dataset,
 		batch_size=args.batch_size,
@@ -178,6 +177,7 @@ if __name__ == '__main__':
 		sampler=sampler(t_train_size, args.batch_size), 
 		num_workers=args.num_workers,
 	)
+	logger.info("Datasets and dataloader initialized")
 
 	# initilize the tensor holder here.
 	im_data = torch.FloatTensor(1)
@@ -199,6 +199,8 @@ if __name__ == '__main__':
 		tgt_im_info = tgt_im_info.cuda()
 		tgt_num_boxes = tgt_num_boxes.cuda()
 		tgt_gt_boxes = tgt_gt_boxes.cuda()
+
+	logger.info("Ship to cuda")
 
 	# make variable
 	im_data = Variable(im_data)
