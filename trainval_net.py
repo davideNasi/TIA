@@ -191,13 +191,21 @@ if __name__ == '__main__':
 
 	# ship to cuda
 	if args.cuda:
+		logger.info("Shipping im_data to cuda")
 		im_data = im_data.cuda()
+		logger.info("Shipping im_info to cuda")
 		im_info = im_info.cuda()
+		logger.info("Shipping num_boxes to cuda")
 		num_boxes = num_boxes.cuda()
+		logger.info("Shipping gt_boxes to cuda")
 		gt_boxes = gt_boxes.cuda()
+		logger.info("Shipping tgt_im_data to cuda")
 		tgt_im_data = tgt_im_data.cuda()
+		logger.info("Shipping tft_im_info to cuda")
 		tgt_im_info = tgt_im_info.cuda()
+		logger.info("Shipping tgt_num_boxes to cuda")
 		tgt_num_boxes = tgt_num_boxes.cuda()
+		logger.info("Shipping tgt_gt_boxes to cuda")
 		tgt_gt_boxes = tgt_gt_boxes.cuda()
 
 	logger.info("Ship to cuda")
