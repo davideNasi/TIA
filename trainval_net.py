@@ -192,7 +192,7 @@ if __name__ == '__main__':
 	# ship to cuda
 	if args.cuda:
 		logger.info("Shipping im_data to cuda")
-		im_data = im_data.cuda()
+		im_data = im_data.to("cuda") # code stops here
 		logger.info("Shipping im_info to cuda")
 		im_info = im_info.cuda()
 		logger.info("Shipping num_boxes to cuda")
