@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.1-devel-ubuntu16.04
+FROM nvidia/cuda:11.1.1-devel-ubuntu16.04
 RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
 RUN apt-get install -y build-essential \
 checkinstall \
@@ -17,6 +17,8 @@ python3-dev \
 python3-setuptools \
 libjpeg-dev \
 zlib1g-dev \
+lzma \
+liblzma-dev \
 wget -y
 
 # Python 3.7
@@ -30,7 +32,7 @@ RUN make altinstall
 
 # Dependencies
 RUN pip3.7 install --upgrade pip
-RUN pip3.7 install torch==1.2.0 torchvision==0.4.0
+RUN pip3.7 install torch==1.8.0+cu111 torchvision==0.9.0+cu111 torchaudio==0.8.0 -f https://download.pytorch.org/whl/torch_stable.html
 RUN pip3.7 install "pillow<7"
 RUN pip3.7 install easydict pyyaml==5.4.1 opencv-python scipy
 
