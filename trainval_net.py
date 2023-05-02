@@ -389,12 +389,6 @@ if __name__ == '__main__':
 				alpha3=alpha3
 			)
 
-			print("sv loss: ")
-			print(rpn_loss_cls.mean())
-			print(rpn_loss_box.mean())
-			print(rpn_loss_box)
-			print(RCNN_loss_cls)
-			print(RCNN_loss_bbox)
 
 			sv_loss = (
 				rpn_loss_cls.mean()

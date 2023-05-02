@@ -39,11 +39,9 @@ RUN pip3.7 install easydict pyyaml==5.4.1 opencv-python scipy
 # TIA
 RUN apt install git -y
 WORKDIR /
-ARG CACHEBUST=4
+ARG CACHEBUST=5
 RUN git clone https://github.com/davideNasi/TIA.git
 WORKDIR /TIA/lib
-RUN python3.7 setup.py build develop
-RUN rm -r build
 RUN python3.7 setup.py build develop
 WORKDIR /TIA
 
