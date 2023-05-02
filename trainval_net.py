@@ -390,7 +390,8 @@ if __name__ == '__main__':
 			)
 
 			print("sv loss: ")
-			print(rpn_loss_cls)
+			print(rpn_loss_cls.mean())
+			print(rpn_loss_box.mean())
 			print(rpn_loss_box)
 			print(RCNN_loss_cls)
 			print(RCNN_loss_bbox)
@@ -432,6 +433,8 @@ if __name__ == '__main__':
 			loss.backward()
 			if args.net == "vgg16":
 				loss_dict['norm'] += clip_gradient(fasterRCNN, 35.)
+
+			torch.nn.utils.clip_grad_norm_(fasterRCNN.parameters(), 1.0)
 			optimizer.step()
 
 			if step % args.disp_interval == 0:
