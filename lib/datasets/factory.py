@@ -15,7 +15,7 @@ from datasets.cityscape import cityscape
 from datasets.cityscape_car import cityscape_car
 from datasets.clipart import clipart
 from datasets.kitti_car import kitti_car
-from datasets.wolves import park1, park2
+from datasets.wolves import park1, park2, park2_test
 
 
 
@@ -30,6 +30,10 @@ for split in ['train']:
 for split in ['train']:
     name = "park2_" + split
     __sets[name] = lambda split=split : park2(split)
+
+for split in ['test']:
+    name = "park2_" + split
+    __sets[name] = lambda split=split : park2_test(split)
 
 for year in ['2007', '2012']:
     for split in ['train', 'val', 'trainval', 'trainval_aug', 'test']:

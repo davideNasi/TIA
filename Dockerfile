@@ -42,5 +42,5 @@ WORKDIR /
 ARG CACHEBUST=7
 RUN git clone https://github.com/davideNasi/TIA.git
 WORKDIR /TIA
-CMD ["scripts/wolves/train.sh"]
+CMD ["bash","scripts/wolves/train.sh"]
 

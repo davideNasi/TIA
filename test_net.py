@@ -79,6 +79,16 @@ if __name__ == '__main__':
 			"MAX_NUM_GT_BOXES",
 			"20",
 		]
+	elif args.dataset == "wolves":
+		args.t_imdbtest_name = "park2_test"
+		args.set_cfgs = [
+			"ANCHOR_SCALES",
+			"[8,16,32]",
+			"ANCHOR_RATIOS",
+			"[0.5,1,2]",
+			"MAX_NUM_GT_BOXES",
+			"10",
+		]
 	else:
 		print('Undefined Dataset')
 
@@ -126,7 +136,7 @@ if __name__ == '__main__':
 	fasterRCNN.create_architecture()
 
 	print(f"load checkpoint {load_name}")
-	checkpoint = torch.load(load_name)
+	checkpoint = torch.jit.load(load_name)
 	fasterRCNN.load_state_dict(       
 		{k: v for k, v in checkpoint["model"].items() if k in fasterRCNN.state_dict()},
 		strict=False
