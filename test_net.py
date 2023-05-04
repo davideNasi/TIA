@@ -136,7 +136,7 @@ if __name__ == '__main__':
 	fasterRCNN.create_architecture()
 
 	print(f"load checkpoint {load_name}")
-	checkpoint = torch.jit.load(load_name)
+	checkpoint = torch.load(load_name)
 	fasterRCNN.load_state_dict(       
 		{k: v for k, v in checkpoint["model"].items() if k in fasterRCNN.state_dict()},
 		strict=False

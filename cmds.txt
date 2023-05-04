@@ -1,1 +1,5 @@
 nohup docker run --gpus all --ipc=host -v ~/da/tia/wolves:/TIA/data/wolves -v ~/da/tia/resnet101_caffe.pth:/TIA/pretrained_models/resnet101_caffe.pth -v ~/da/tia/models:/TIA/models da &
+
+
+docker run --gpus all --ipc=host -v ~/da/tia/wolves:/TIA/data/wolves -v ~/da/tia/resnet101_caffe.pth:/TIA/pretrained_models/resnet101_caffe.pth -v ~/da/tia/models:/TIA/models  --rm -it --entrypoint bash da
+
