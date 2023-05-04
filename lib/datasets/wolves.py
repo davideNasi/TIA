@@ -1011,7 +1011,7 @@ class park2_test(imdb):
         cachedir = os.path.join(self._data_path, "annotations_cache")
         aps = []
         # The PASCAL VOC metric changed in 2010
-        use_07_metric = False # todo check True??
+        use_07_metric = True # todo check True??
         print("VOC07 metric? " + ("Yes" if use_07_metric else "No"))
         if not os.path.isdir(output_dir):
             os.mkdir(output_dir)
