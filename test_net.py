@@ -174,7 +174,7 @@ if __name__ == '__main__':
 	start = time.time()
 	max_per_image = 100
 
-	vis = args.vis
+	vis = True
 
 	if vis:
 		thresh = 0.05
@@ -316,9 +316,9 @@ if __name__ == '__main__':
 		sys.stdout.flush()
 
 		if vis:
-			cv2.imwrite('result.png', im2show)
-			pdb.set_trace()
-			#cv2.imshow('test', im2show)
+			cv2.imwrite('output/images/result' + i + '.png', im2show)
+			# pdb.set_trace()
+			# cv2.imshow('test', im2show)
 			# cv2.waitKey(0)
 
 	with open(det_file, 'wb') as f:
