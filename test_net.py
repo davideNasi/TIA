@@ -316,7 +316,7 @@ if __name__ == '__main__':
 		sys.stdout.flush()
 
 		if vis:
-			cv2.imwrite('output/images/result' + i + '.png', im2show)
+			cv2.imwrite('output/images/result' + str(i) + '.png', im2show)
 			# pdb.set_trace()
 			# cv2.imshow('test', im2show)
 			# cv2.waitKey(0)
