@@ -292,7 +292,7 @@ __C.MAX_NUM_GT_BOXES = 20
 __C.ANCHOR_SCALES = [64,128,256]
 
 # Anchor ratios for RPN
-__C.ANCHOR_RATIOS = [0.5,1,2]
+__C.ANCHOR_RATIOS = [0.5,1,2,4]
 
 # Feature stride for RPN
 __C.FEAT_STRIDE = [16, ]
