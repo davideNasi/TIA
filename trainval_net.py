@@ -99,7 +99,7 @@ if __name__ == '__main__':
 			"ANCHOR_SCALES",
 			"[8,16,32]",
 			"ANCHOR_RATIOS",
-			"[0.5,1,2]",
+			"[0.5,1,2,4]",
 			"MAX_NUM_GT_BOXES",
 			"20",
 		]
@@ -108,9 +108,9 @@ if __name__ == '__main__':
 		args.t_imdb_name = "park2_train"
 		args.set_cfgs = [
 			"ANCHOR_SCALES",
-			"[8,16,32]",
+			"[32,64,128]",
 			"ANCHOR_RATIOS",
-			"[0.5,1,2]",
+			"[0.5,1,2,4]",
 			"MAX_NUM_GT_BOXES",
 			"10",
 		]
@@ -452,7 +452,8 @@ if __name__ == '__main__':
 				loss_dict = _reset_dict(loss_dict)
 				start = time.time()
 
-		if epoch > 4 or args.preserve:
+		#if epoch > 4 or args.preserve:
+		if True:
 			save_name = os.path.join(
 				output_dir, 
 				f'da_faster_rcnn_{args.dataset}_{epoch}.pth'
