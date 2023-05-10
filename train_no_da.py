@@ -1,4 +1,4 @@
-#--------------------------------------------------------
+# --------------------------------------------------------
 # Pytorch multi-GPU Faster R-CNN
 # Licensed under The MIT License [see LICENSE for details]
 # Written by Jiasen Lu, Jianwei Yang, based on code from Ross Girshick
@@ -177,11 +177,11 @@ if __name__ == '__main__':
         args.imdbval_name = "vg_150-50-50_minival"
         args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '50']
     elif args.dataset == "wolves":
-		# train sizes: train, smalltrain, minitrain
-		# train scale: ['150-50-20', '150-50-50', '500-150-80', '750-250-150', '1750-700-450', '1600-400-20']
-		args.imdb_name = "park1_train"
-		args.imdbval_name = "park2_test"
-		args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '10']
+        # train sizes: train, smalltrain, minitrain
+        # train scale: ['150-50-20', '150-50-50', '500-150-80', '750-250-150', '1750-700-450', '1600-400-20']
+        args.imdb_name = "park1_train"
+        args.imdbval_name = "park2_test"
+        args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '10']
 
     args.cfg_file = "cfgs/{}_ls.yml".format(args.net) if args.large_scale else "cfgs/{}.yml".format(args.net)
 
@@ -317,16 +317,17 @@ if __name__ == '__main__':
         data_iter = iter(dataloader)
         for step in range(iters_per_epoch):
             data = next(data_iter)
-            im_data.data.resize_(data[0].size()).copy_(data[0])
-            im_info.data.resize_(data[1].size()).copy_(data[1])
-            gt_boxes.data.resize_(data[2].size()).copy_(data[2])
-            num_boxes.data.resize_(data[3].size()).copy_(data[3])
+            with torch.no_grad():
+                im_data.resize_(data[0].size()).copy_(data[0])
+                im_info.resize_(data[1].size()).copy_(data[1])
+                gt_boxes.resize_(data[2].size()).copy_(data[2])
+                num_boxes.resize_(data[3].size()).copy_(data[3])
 
             fasterRCNN.zero_grad()
             rois, cls_prob, bbox_pred, \
                 rpn_loss_cls, rpn_loss_box, \
                 RCNN_loss_cls, RCNN_loss_bbox, \
-                rois_label = fasterRCNN(im_data, im_info, gt_boxes, num_boxes)
+                rois_label, _, _, _, _, _, _ = fasterRCNN(im_data, im_info, gt_boxes, num_boxes)
 
             loss = rpn_loss_cls.mean() + rpn_loss_box.mean() \
                    + RCNN_loss_cls.mean() + RCNN_loss_bbox.mean()
