@@ -108,7 +108,7 @@ if __name__ == '__main__':
 		args.t_imdb_name = "park2_train"
 		args.set_cfgs = [
 			"ANCHOR_SCALES",
-			"[32,64,128]",
+			"[8, 16, 32]",
 			"ANCHOR_RATIOS",
 			"[0.5,1,2,4]",
 			"MAX_NUM_GT_BOXES",
