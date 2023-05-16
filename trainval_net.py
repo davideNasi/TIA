@@ -112,7 +112,7 @@ if __name__ == '__main__':
 			"ANCHOR_RATIOS",
 			"[0.5,1,2,4]",
 			"MAX_NUM_GT_BOXES",
-			"10",
+			"2",
 		]
 	else:
 		logger.info('Undefined Dataset')
