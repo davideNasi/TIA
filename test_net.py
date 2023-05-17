@@ -83,11 +83,11 @@ if __name__ == '__main__':
 		args.t_imdbtest_name = "park2_test"
 		args.set_cfgs = [
 			"ANCHOR_SCALES",
-			"[64,128,256]",
+			"[8, 16, 32]",
 			"ANCHOR_RATIOS",
 			"[0.5,1,2,4]",
 			"MAX_NUM_GT_BOXES",
-			"10",
+			"2",
 		]
 	else:
 		print('Undefined Dataset')

@@ -397,7 +397,7 @@ if __name__ == '__main__':
 				+ RCNN_loss_bbox
 			)
 
-			da_img_loss = 0.5 * (
+			da_img_loss = 0.1 * (
 				torch.mean(img_feat1 ** 2) + 
 				torch.mean((1 - tgt_img_feat1) ** 2) + 
 				CE(img_feat2, domain=0) * 0.15 +
