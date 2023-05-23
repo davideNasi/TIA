@@ -110,7 +110,7 @@ if __name__ == '__main__':
 			"ANCHOR_SCALES",
 			"[8, 16, 32]",
 			"ANCHOR_RATIOS",
-			"[0.5,1,2,4]",
+			"[0.5,1,2]",
 			"MAX_NUM_GT_BOXES",
 			"2",
 		]
@@ -287,7 +287,7 @@ if __name__ == '__main__':
 	if args.cuda:
 		fasterRCNN.cuda()
 
-	iters_per_epoch = int(10000  / args.batch_size)
+	iters_per_epoch = int(1000 / args.batch_size) #TODO change
 	loss_dict = {'loss': 0, 'sv': 0, 'da_img': 0, 'da_ins': 0, 'da_cls': 0, 'da_loc': 0, 'norm': 0}
 	CE = CrossEntropyLoss(num_classes=2)
 	FL = FocalLoss(num_classes=2, gamma=args.gamma)
@@ -397,7 +397,7 @@ if __name__ == '__main__':
 				+ RCNN_loss_bbox
 			)
 
-			da_img_loss = 0.1 * (
+			da_img_loss = 0.5 * ( #TODO add a lamda0 param for this
 				torch.mean(img_feat1 ** 2) + 
 				torch.mean((1 - tgt_img_feat1) ** 2) + 
 				CE(img_feat2, domain=0) * 0.15 +
