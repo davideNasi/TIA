@@ -300,7 +300,7 @@ class park1(imdb):
                             )
                         )
 
-    def _do_python_eval(self, output_dir="output"):
+    def _do_python_eval(self, output_dir="output", ovthresh=0.5):
         annopath = os.path.join(
             self._data_path, "Annotations", "{:s}.xml"
         )
@@ -327,7 +327,7 @@ class park1(imdb):
                 imagesetfile,
                 cls,
                 cachedir,
-                ovthresh=0.5,
+                ovthresh=ovthresh,
                 use_07_metric=use_07_metric,
             )
             aps += [ap]

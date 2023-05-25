@@ -85,7 +85,7 @@ if __name__ == '__main__':
 			"ANCHOR_SCALES",
 			"[8, 16, 32]",
 			"ANCHOR_RATIOS",
-			"[0.5,1,2,4]",
+			"[0.5,1,2]",
 			"MAX_NUM_GT_BOXES",
 			"2",
 		]
@@ -325,7 +325,7 @@ if __name__ == '__main__':
 		pickle.dump(all_boxes, f, pickle.HIGHEST_PROTOCOL)
 
 	print('Evaluating detections')
-	imdb.evaluate_detections(all_boxes, output_dir)
+	imdb.evaluate_detections(all_boxes, output_dir, ovthresh=0.01)
 
 	end = time.time()
 	print("test time: %0.4fs" % (end - start))
