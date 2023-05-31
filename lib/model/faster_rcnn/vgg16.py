@@ -119,6 +119,7 @@ class _InstanceLayer(nn.Module):
         self.conv1 = nn.Conv2d(dim, 512, kernel_size=3, stride=2, padding=1, bias=False)
         self.conv2 = nn.Conv2d(512, 128, kernel_size=3, stride=2, padding=1, bias=False)
         self.conv3 = nn.Conv2d(128, 128, kernel_size=3, stride=2, padding=1, bias=False)
+        self.db = db
         self.fc = nn.Linear(128, 2)
 
         if self.db:
