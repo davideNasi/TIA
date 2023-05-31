@@ -20,7 +20,8 @@ import torch.nn.functional as F
 import torch.optim as optim
 import torchvision.transforms as transforms
 
-from model.faster_rcnn.resnet      import resnet
+from model.faster_rcnn.resnet import resnet, resnet50
+from model.faster_rcnn.resnet50 import my_resnet50
 from model.faster_rcnn.vgg16       import vgg16
 from model.utils.config            import cfg, cfg_from_file, cfg_from_list, get_output_dir
 from model.utils.net_utils         import adjust_learning_rate, clip_gradient, create_logger, load_net, save_checkpoint, save_net
@@ -235,6 +236,11 @@ if __name__ == '__main__':
 		fasterRCNN = resnet(s_imdb.classes, 101, pretrained=True,
 							class_agnostic=args.class_agnostic,
 							context=args.context, 
+							num_aux1=args.num_aux1, num_aux2=args.num_aux2)
+	elif args.net == 'res50':
+		fasterRCNN = my_resnet50(s_imdb.classes, 50, pretrained=False, #TODO x Andrea, se riesci a trovare un modello caffe pretrainato, metti qua a False
+							class_agnostic=args.class_agnostic,
+							context=args.context,
 							num_aux1=args.num_aux1, num_aux2=args.num_aux2)
 	else:
 		logger.info('Undefined Network')
