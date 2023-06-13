@@ -126,6 +126,17 @@ if __name__ == '__main__':
 			"MAX_NUM_GT_BOXES",
 			"2",
 		]
+	elif args.dataset == "wolves_day_and_night":
+		args.s_imdb_name = "park2_day"
+		args.t_imdb_name = "park2_night"
+		args.set_cfgs = [
+			"ANCHOR_SCALES",
+			"[8, 16, 32]",
+			"ANCHOR_RATIOS",
+			"[0.5,1,2]",
+			"MAX_NUM_GT_BOXES",
+			"4",
+		]
 	else:
 		logger.info('Undefined Dataset')
 
@@ -304,7 +315,7 @@ if __name__ == '__main__':
 	if args.cuda:
 		fasterRCNN.cuda()
 
-	iters_per_epoch = int(2000 / args.batch_size) #TODO change
+	iters_per_epoch = int(500 / args.batch_size) #TODO change
 	loss_dict = {'loss': 0, 'sv': 0, 'da_img': 0, 'da_ins': 0, 'da_cls': 0, 'da_loc': 0, 'norm': 0}
 	CE = CrossEntropyLoss(num_classes=2)
 	FL = FocalLoss(num_classes=2, gamma=args.gamma)
