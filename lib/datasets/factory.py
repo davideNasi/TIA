@@ -41,10 +41,10 @@ for split in ['train']:
     name = "park1_camera2_" + split
     __sets[name] = lambda split=split : park1_camera2(split)
 for split in ['train']:
-    name = "park2_day" + split
+    name = "park2_day_" + split
     __sets[name] = lambda split=split : park2_day(split)
 for split in ['train']:
-    name = "park2_night" + split
+    name = "park2_night_" + split
     __sets[name] = lambda split=split : park2_night(split)
 
 for year in ['2007', '2012']:

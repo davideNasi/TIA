@@ -127,8 +127,8 @@ if __name__ == '__main__':
 			"2",
 		]
 	elif args.dataset == "wolves_day_and_night":
-		args.s_imdb_name = "park2_day"
-		args.t_imdb_name = "park2_night"
+		args.s_imdb_name = "park2_day_train"
+		args.t_imdb_name = "park2_night_train"
 		args.set_cfgs = [
 			"ANCHOR_SCALES",
 			"[8, 16, 32]",
