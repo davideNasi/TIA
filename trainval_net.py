@@ -137,6 +137,17 @@ if __name__ == '__main__':
 			"MAX_NUM_GT_BOXES",
 			"4",
 		]
+	elif args.dataset == "wolves_day":
+		args.s_imdb_name = "park1_train"
+		args.t_imdb_name = "park2_day_train"
+		args.set_cfgs = [
+			"ANCHOR_SCALES",
+			"[8, 16, 32]",
+			"ANCHOR_RATIOS",
+			"[0.5,1,2]",
+			"MAX_NUM_GT_BOXES",
+			"4",
+		]
 	else:
 		logger.info('Undefined Dataset')
 
