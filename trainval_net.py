@@ -326,7 +326,7 @@ if __name__ == '__main__':
 	if args.cuda:
 		fasterRCNN.cuda()
 
-	iters_per_epoch = int(500 / args.batch_size) #TODO change
+	iters_per_epoch = int(5000 / args.batch_size) #TODO change
 	loss_dict = {'loss': 0, 'sv': 0, 'da_img': 0, 'da_ins': 0, 'da_cls': 0, 'da_loc': 0, 'norm': 0}
 	CE = CrossEntropyLoss(num_classes=2)
 	FL = FocalLoss(num_classes=2, gamma=args.gamma)
